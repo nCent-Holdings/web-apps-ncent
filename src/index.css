@@ -1,0 +1,69 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Order here is important, import from ux-components needs to come after tailwind built-ins */
+@import '@ncent-holdings/ux-components/dist/tailwind.css';
+@import '@ncent-holdings/ux-components/dist/style.css';
+@import 'react-international-phone/style.css';
+
+html {
+  @apply scroll-smooth;
+}
+body {
+  @apply bg-white-background font-spezia antialiased [font-feature-settings:kern] [text-rendering:optimizeLegibility];
+}
+
+:root {
+  --white-background: theme(colors.white.background);
+  --content-max-lg: 75rem;
+  --content-top-space: 3.5rem;
+  --titleonscroll-height: 5rem;
+
+  --topnav-height: 5.5rem;
+
+  --leftnav-toggle-height: 3.5rem;
+
+  --layout-inset: 1.5rem; /* the "gutter" */
+  --logo-area-width: 3.5rem;
+  --left-nav-width: 10.875rem;
+  --left-nav-width-collapsed: 3.5rem;
+  --right-panel-width: 15.375rem; /* 246px */
+  --right-panel-width-hidden: 0.1rem; /* has to be almost 0, but cannot be "0" */
+  --right-panel-width-full: 23.0625rem; /* 369px */
+
+  /* How to understand the naming -- here's an example:
+   "left-l0r1" means "The left dimension WHEN: leftnav-expanded + rightpanel-visible" */
+
+  --left-l0r0: var(--logo-area-width);
+  --left-l1r0: var(--left-nav-width);
+  --left-l0r1: var(--logo-area-width);
+  --left-l1r1: var(--left-nav-width);
+  --left-l0r2: var(--logo-area-width);
+  --left-l1r2: var(--left-nav-width);
+
+  --right-l0r0: var(--logo-area-width);
+  --right-l1r0: var(--right-panel-width-hidden);
+  --right-l0r1: calc((var(--right-panel-width) + var(--logo-area-width)) - var(--left-nav-width-collapsed));
+  --right-l1r1: var(--right-panel-width);
+  --right-l0r2: calc((var(--right-panel-width-full) + var(--logo-area-width)) - var(--left-nav-width-collapsed));
+  --right-l1r2: var(--right-panel-width-full);
+
+  --left-nav-width-inset: calc(var(--left-nav-width) + var(--layout-inset));
+
+  --left-l0r0-inset: calc(var(--left-l0r0) + var(--layout-inset));
+  --left-l1r0-inset: calc(var(--left-l1r0) + var(--layout-inset));
+  --left-l0r1-inset: calc(var(--left-l0r1) + var(--layout-inset));
+  --left-l1r1-inset: calc(var(--left-l1r1) + var(--layout-inset));
+  --left-l0r2-inset: calc(var(--left-l0r2) + var(--layout-inset));
+  --left-l1r2-inset: calc(var(--left-l1r2) + var(--layout-inset));
+
+  --right-panel-width-inset: calc(var(--left-nav-width) + var(--layout-inset));
+
+  --right-l0r0-inset: calc(var(--right-l0r0) + var(--layout-inset));
+  --right-l1r0-inset: calc(var(--right-l1r0) + var(--layout-inset));
+  --right-l0r1-inset: calc(var(--right-l0r1) + var(--layout-inset));
+  --right-l1r1-inset: calc(var(--right-l1r1) + var(--layout-inset));
+  --right-l0r2-inset: calc(var(--right-l0r2) + var(--layout-inset));
+  --right-l1r2-inset: calc(var(--right-l1r2) + var(--layout-inset));
+}

@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:v="urn:schemas-microsoft-com:vml"
+  lang="en"
+>
+  <head>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      hs-webfonts="true"
+      href="https://fonts.googleapis.com/css?family=Lato|Lato:i,b,bi"
+    />
+    <title>Technical Sales Manager Invitation</title>
+    <meta property="og:title" content="Technical Sales Manager Invitation" />
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <style type="text/css">
+      p {
+        font-weight: 100;
+      }
+
+      a {
+          text-decoration: none;
+      }
+
+      #email {
+        margin: auto;
+        width: 600px;
+        background-color: white;
+      }
+
+      button {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 16px;
+        gap: 8px;
+        margin-top: 64px;
+        margin-bottom: 64px;
+
+        min-width: 48px;
+        height: 48px;
+
+        background: #0061FF;
+        box-shadow:
+          0 0 0 0 rgba(151, 176, 196, 0.12),
+          0 2px 5px 0 rgba(151, 176, 196, 0.11),
+          0 9px 9px 0 rgba(151, 176, 196, 0.10),
+          0 21px 13px 0 rgba(151, 176, 196, 0.06),
+          0 37px 15px 0 rgba(151, 176, 196, 0.02),
+          0 58px 16px 0 rgba(151, 176, 196, 0.00);
+        border: none;
+        border-radius: 8px;
+
+        /* font-family: 'Spezia Trial'; */
+        font-style: normal;
+        font-weight: 500;
+        font-size: 15px;
+        line-height: 18px;
+
+        text-align: center;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+
+        color: #ffffff;
+      }
+
+      button:hover {
+        background: #0047BA;
+        box-shadow:
+          0 0 0 0 rgba(27, 50, 95, 0.12),
+          0 3px 7px 0 rgba(27, 50, 95, 0.12),
+          0 12px 12px 0 rgba(27, 50, 95, 0.10),
+          0 28px 17px 0 rgba(27, 50, 95, 0.06),
+          0 50px 20px 0 rgba(27, 50, 95, 0.02),
+          0 78px 22px 0 rgba(27, 50, 95, 0.00);
+      }
+    </style>
+  </head>
+
+  <body
+    bgcolor="#ECF4FA"
+    style="
+      width: 100%;
+      margin: auto 0;
+      padding: 0;
+      font-family: Lato, sans-serif;
+      font-size: 18px;
+      color: #33475b;
+      word-break: break-word;
+    "
+  >
+    <div id="email">
+      <div width="100%">
+        <img alt="Office" src="https://www.wellcube.dev/images/OfficeEmail.jpg" width="600px" align="middle" />
+      </div>
+
+      <p>Hi,</p>
+      <p>
+        {{Inviter}} invited you to create a WellCube Technical Sales Manager account. As a Technical Sales Manager,
+        you'll be able to use this platform to view and manage your WellCube clients.
+      </p>
+
+      <p>Follow the link below to accept the invite and create your account.</p>
+
+      <p>Welcome to WellCube.</p>
+
+      <div style="text-align: center">
+        <button
+          onclick=" window.open('https://www.wellcube.dev/create-account/sales-manager?id={{inviteId}}', '_blank')"
+        >
+          CREATE ACCOUNT
+        </button>
+      </div>
+
+      <p style="text-align: center">
+        This invitation was intended for {{recipientEmailAddress}}. If you were not expecting this invitation, you can
+        ignore this email. If you have questions or concerns, contact {{senderEmailAddress}}
+      </p>
+    </div>
+  </body>
+</html>

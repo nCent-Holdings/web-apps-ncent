@@ -1,0 +1,27 @@
+div#gw-device-list {
+  scrollbar-color: #344054 #fff;
+}
+
+div#gw-device-list::-webkit-scrollbar {
+  width: 32px;
+  background: #fff;
+  border-radius: 0 0 12px 0;
+  border-left: 1px solid #d4dfea;
+}
+
+div#gw-device-list::-webkit-scrollbar-thumb {
+  border: 12px solid transparent;
+  background-clip: content-box !important;
+  border-radius: 20px;
+  background: #344054;
+}
+
+div#gw-device-shadow {
+  box-shadow:
+    0px 0px 0px 0px rgba(47, 59, 121, 0.06),
+    -2px 0px 4px 0px rgba(47, 59, 121, 0.06),
+    -8px 0px 8px 0px rgba(47, 59, 121, 0.05),
+    -17px 0px 10px 0px rgba(47, 59, 121, 0.03),
+    -30px 0px 12px 0px rgba(47, 59, 121, 0.01),
+    -47px 0px 13px 0px rgba(47, 59, 121, 0);
+}

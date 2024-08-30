@@ -1,0 +1,37 @@
+<svg width="41" height="40" viewBox="0 0 41 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_176_1781)">
+<g filter="url(#filter0_ddd_176_1781)">
+<rect x="2.5" y="2" width="36" height="36" rx="18" fill="url(#paint0_linear_176_1781)"/>
+<path d="M18.5 14L24.5 20L18.5 26" stroke="#FBFDFF" stroke-width="1.125" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="3" y="2.5" width="35" height="35" rx="17.5" stroke="#6D7A93" stroke-opacity="0.75"/>
+</g>
+</g>
+<defs>
+<filter id="filter0_ddd_176_1781" x="-25.5" y="-20" width="76" height="73" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dx="2" dy="5"/>
+<feGaussianBlur stdDeviation="5"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0.806215 0 0 0 0 0.853688 0 0 0 0 0.891667 0 0 0 1 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_176_1781"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dx="-13" dy="-7"/>
+<feGaussianBlur stdDeviation="7.5"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0.925 0 0 0 0 0.966667 0 0 0 0 1 0 0 0 0.65 0"/>
+<feBlend mode="normal" in2="effect1_dropShadow_176_1781" result="effect2_dropShadow_176_1781"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dx="-7" dy="-7"/>
+<feGaussianBlur stdDeviation="6"/>
+<feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.1 0"/>
+<feBlend mode="normal" in2="effect2_dropShadow_176_1781" result="effect3_dropShadow_176_1781"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect3_dropShadow_176_1781" result="shape"/>
+</filter>
+<linearGradient id="paint0_linear_176_1781" x1="26.2325" y1="51.5" x2="-9.08909" y2="31.3261" gradientUnits="userSpaceOnUse">
+<stop stop-color="#38455E"/>
+<stop offset="1" stop-color="#6C7993"/>
+</linearGradient>
+<clipPath id="clip0_176_1781">
+<rect width="40" height="40" fill="white" transform="translate(0.5)"/>
+</clipPath>
+</defs>
+</svg>

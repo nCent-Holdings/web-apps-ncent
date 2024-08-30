@@ -1,0 +1,99 @@
+@config "../../../tailwind.config.cjs";
+
+/* Devices style */
+.del-tbody_devices,
+.del-tfoot_devices {
+  @apply bg-[#F8FCFF];
+}
+
+.del-tr_devices {
+  &:first-child {
+    @apply pt-5;
+  }
+}
+
+.del-td_devices {
+  @apply h-[105px] border-0 p-0 first:pl-5 last:pr-5;
+
+  & > div {
+    @apply flex h-full items-center border-b border-[#D4DFEA] bg-white px-5 py-5 text-[.75rem] font-light leading-[145%] text-black-soft;
+  }
+
+  &:first-child > div {
+    @apply border-l;
+  }
+
+  &:last-child > div {
+    @apply border-r;
+  }
+}
+
+.del-td_devices--first-in-group {
+  & > div {
+    @apply border-t;
+  }
+}
+
+.del-td_devices--last-in-group {
+  @apply h-[125px];
+
+  &:first-child > div {
+    @apply rounded-bl-lg;
+  }
+
+  &:last-child > div {
+    @apply rounded-br-lg;
+  }
+}
+
+.del-td_devices--grouped-value {
+  @apply h-fit pt-5;
+
+  & > div {
+    @apply flex-col items-start border-none bg-transparent p-0 text-h4 font-semibold;
+  }
+}
+
+/* Zebra style */
+.del-tbody_zebra,
+.del-tfoot_zebra {
+  @apply bg-white;
+}
+
+.del-tr_zebra {
+  &:nth-child(even) {
+    @apply bg-white;
+  }
+
+  &:nth-child(odd) {
+    @apply bg-[#F2F6FA];
+  }
+}
+
+.del-td_zebra {
+  @apply border-0 p-0;
+
+  & > div {
+    @apply px-5 py-2 text-sm font-medium text-black-light-soft;
+  }
+}
+
+.del-td_zebra--first-in-group {
+  @apply pt-3;
+}
+
+.del-td_zebra--last-in-group {
+  @apply relative border-b border-b-card-stroke pb-3;
+
+  /* @TODO: Add white line in the group bottom */
+  @apply after:absolute after:bottom-0 after:left-0 after:mt-auto after:block after:h-3 after:w-full after:bg-white after:content-[''];
+  /* @apply after:relative after:left-0 after:top-0 after:block after:h-3 after:w-full after:bg-alert-error-light after:content-['']; */
+}
+
+.del-td_zebra--grouped-value {
+  @apply border-b border-b-card-stroke bg-white px-5 py-8 align-top text-base font-semibold text-black-light-soft;
+
+  & > div {
+    @apply px-0 py-0;
+  }
+}

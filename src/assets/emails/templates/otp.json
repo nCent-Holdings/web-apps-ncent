@@ -1,0 +1,6 @@
+{
+	"text": "Your One Time Password (OTP) for login is {{otp}} . This code expires in 10 minutes.",
+	"html": "<html><body>Your One Time Password (OTP) for login is {{otp}} . This code expires in 10 minutes.</body></html>",
+	"source": "noreply-mfa@wellcube.io",
+	"subject": "Your One Time Password (OTP)"
+}

@@ -1,0 +1,39 @@
+interface Config {
+  cloudBackendHttpUrl: string;
+  internetUgwWsUrl: string;
+  productId: string;
+  appName: string;
+
+  // Cognito data
+  userPoolId: string;
+  clientId: string;
+
+  // S3 Config
+  awsS3Region: string;
+
+  // Demo Data
+  demoUserJwt: string;
+}
+
+const config: Config = {
+  cloudBackendHttpUrl: 'https://cloud.wellcube-prod.dwn-iot.com/api/v1',
+<<<<<<< Updated upstream
+  internetUgwWsUrl: 'wss://ugw.wellcube-prod.dwn-iot.com',
+=======
+  internetUgwWsUrl: 'wss://user-gateway.wellcube-prod.dwn-iot.com',
+>>>>>>> Stashed changes
+  productId: 'wellcube',
+  appName: 'wellcube',
+
+  // Cognito data
+  userPoolId: 'us-east-1_zwjeReVDa',
+  clientId: 'h7vuui3abu9bf5k90pg9e8bo4',
+
+  // S3 Config
+  awsS3Region: 'us-east-1',
+
+  // DEMO DATA
+  demoUserJwt: '',
+};
+
+export default config;

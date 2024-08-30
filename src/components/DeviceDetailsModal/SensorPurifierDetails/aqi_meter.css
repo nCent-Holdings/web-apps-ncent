@@ -1,0 +1,39 @@
+.aqi-arc {
+  transition-property: fill, filter;
+  transition-timing-function: linear;
+  transition-duration: 200ms;
+}
+
+.aqi-arc__unknown {
+  fill: #dde2ec;
+  opacity: 0.5;
+}
+
+.aqi-arc__unknown--dark {
+  fill: #98a2b3;
+  opacity: 0.5;
+}
+
+.aqi-arc__good {
+  fill: #00b047;
+  filter: drop-shadow(0px 0px 0px rgba(31, 206, 28, 0.22))
+    drop-shadow(1.6126681566238403px 1.6126681566238403px 4.8380045890808105px rgba(31, 206, 28, 0.22))
+    drop-shadow(5.644338130950928px 5.644338130950928px 8.063340187072754px rgba(31, 206, 28, 0.19))
+    drop-shadow(12.901345252990723px 12.901345252990723px 11.288676261901855px rgba(31, 206, 28, 0.11))
+    drop-shadow(22.57735252380371px 23.38368797302246px 12.901345252990723px rgba(31, 206, 28, 0.03))
+    drop-shadow(34.67236328125px 37.091365814208984px 14.514013290405273px rgba(31, 206, 28, 0));
+}
+
+.aqi-arc__fair {
+  fill: #ffc045;
+  filter: drop-shadow(0px 0px 0px #ffc045) drop-shadow(2px 2px 6px rgba(255, 192, 69, 0.22))
+    drop-shadow(7px 7px 10px rgba(255, 192, 69, 0.19)) drop-shadow(16px 16px 14px rgba(255, 192, 69, 0.11))
+    drop-shadow(28px 29px 16px rgba(255, 192, 69, 0.03)) drop-shadow(43px 46px 18px rgba(255, 192, 69, 0));
+}
+
+.aqi-arc__poor {
+  fill: #d33f00;
+  filter: drop-shadow(2px 2px 6px rgba(211, 63, 0, 0.22)) drop-shadow(7px 7px 10px rgba(211, 63, 0, 0.19))
+    drop-shadow(16px 16px 14px rgba(211, 63, 0, 0.11)) drop-shadow(28px 29px 16px rgba(211, 63, 0, 0.03))
+    drop-shadow(43px 46px 18px rgba(211, 63, 0, 0));
+}
