@@ -24,8 +24,21 @@ import { DeviceDetailsContextProvider } from '@src/contexts/DeviceDetailsContext
 import ClientUsers from './client/users/ClientUsers';
 import MyAccount from './common/my-account';
 import NoAccessPage from './NoAccessPage';
+import BuyerRoot from './BuyerRoot';
+import BuyerMain from './buyer/BuyerMain';
 
 const appRouter = createBrowserRouter([
+  {
+    path: '/buyer',
+    element: <BuyerRoot />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: '/buyer',
+        element: <BuyerMain />,
+      },
+    ],
+  },
   {
     path: '/',
     element: <AuthorizedRoot />,
@@ -168,6 +181,10 @@ const appRouter = createBrowserRouter([
     element: <UnauthorizedRoot />,
     errorElement: <ErrorPage />,
     children: [
+      {
+        path: '/buyer',
+        element: <BuyerMain />,
+      },
       {
         path: '/login',
         element: <Login />,

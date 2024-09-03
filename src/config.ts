@@ -16,10 +16,10 @@ interface Config {
 }
 
 const config: Config = {
-  cloudBackendHttpUrl: 'https://cloud.wellcube-prod.dwn-iot.com/api/v1',
-  internetUgwWsUrl: 'wss://ugw.wellcube-prod.dwn-iot.com',
-  productId: 'wellcube',
-  appName: 'wellcube',
+  cloudBackendHttpUrl: 'https://cloud.dev.ncent-path.com/api/v1',
+  internetUgwWsUrl: 'wss://user-gateway.dev.ncent-path.com',
+  productId: 'path',
+  appName: 'path',
 
   // Cognito data
   userPoolId: 'us-east-1_alZhAG2N5',

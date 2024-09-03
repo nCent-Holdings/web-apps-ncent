@@ -10,12 +10,14 @@ import useSession from '../../api-hooks/session/useSession';
 import LoginForm from '../../components/Login/LoginForm';
 import AuthCodeForm from '../../components/Login/AuthCodeForm';
 import LoginHeading from '../../components/Login/Heading';
+import { Navigate } from 'react-router-dom';
 
 enum VIEWS {
   LOGIN,
   CODE,
   SUCCEED,
   FAILURE,
+  BUYER,
 }
 
 const INITIAL_STATE = {
@@ -98,6 +100,10 @@ export const Login: React.FC = () => {
     setView(VIEWS.LOGIN);
   };
 
+  const goToBuyer = () => {
+    setView(VIEWS.BUYER);
+  };
+
   const resendCode = async () => {
     try {
       requestCodeDeferred.current?.resolve({
@@ -111,39 +117,14 @@ export const Login: React.FC = () => {
 
   const renderLoginForm = () => (
     <div className="flex flex-col max-sm:gap-4 max-sm:px-4 sm:gap-9 md:w-[458px]">
-      <Heading heading="Sign in" subheading="Welcome back to WellCube" size="h1" />
+      <Heading heading="Sign in" subheading="Welcome to nCent" size="h1" />
+      <Button
+        variant="primary"
+        className="mt-10 border-none hover:bg-transparent"
+        label="Go to Buyer Experience"
+        onClick={goToBuyer}
+      />
       <LoginForm onSubmit={loginToCognito} />
-      {/* <Divider text="OR" />
-      <div className="flex w-max flex-col gap-12 self-center">
-        <ButtonDeprecated
-          disabled
-          label={
-            <div className="flex w-full flex-row items-center justify-center gap-3 capitalize">
-              <img src="icons/networks/google.svg?react" className="opacity-50" />
-              {'Sign In With Google'}
-            </div>
-          }
-          variant="outline"
-          size="large"
-        />
-        <ButtonDeprecated
-          disabled
-          label={
-            <div className="flex w-full flex-row items-center justify-center gap-3 capitalize">
-              <img src="icons/networks/microsoft.svg?react" className="opacity-50" />
-              {'Sign In With Microsoft'}
-            </div>
-          }
-          variant="outline"
-          size="large"
-        />
-        <span className="self-center font-spezia text-bdy text-grey-600">
-          {`Don't have an account? `}
-          <Link to="/register" className="font-medium text-blue-brilliant">
-            Sign up
-          </Link>
-        </span>
-      </div> */}
     </div>
   );
 
@@ -197,6 +178,10 @@ export const Login: React.FC = () => {
 
   if (view === VIEWS.FAILURE) {
     return renderAuthFailure();
+  }
+
+  if (view === VIEWS.BUYER) {
+    return <Navigate to="/buyer" />;
   }
 
   return renderLoginForm();

@@ -17,7 +17,7 @@
   "dependencies": {
     "@aws-sdk/client-s3": "^3.458.0",
     "@ncent-holdings/user-gateway-client": "^6.4.1",
-    "@ncent-holdings/ux-components": "^0.1.0",
+    "@ncent-holdings/ux-components": "^0.62.9",
     "@reduxjs/toolkit": "^1.9.7",
     "@tailwindcss/typography": "^0.5.10",
     "@tanstack/react-table": "^8.10.7",
