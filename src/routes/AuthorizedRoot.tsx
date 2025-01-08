@@ -32,7 +32,7 @@ export const AuthorizedRoot: React.FC<AuthorizedRootProps> = () => {
   const route = RoutesMap[path];
 
   useEffect(() => {
-    if (!hasSomeAccess) appNav.hideLeftNav();
+    // if (!hasSomeAccess) appNav.hideLeftNav();
 
     return () => appNav.expandLeftNav();
   }, []);

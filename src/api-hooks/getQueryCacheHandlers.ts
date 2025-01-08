@@ -52,7 +52,7 @@ export function getUpdateCacheHandler<TQueryArgs, TEntity extends NVAObject>({
   ) => {
     const { data } = await cacheDataLoaded;
 
-    const installationId = credentialsManager.getWellCubeInstallationId();
+    const installationId = credentialsManager.getNcentInstallationId();
     const listener = coreAPI.multiInstallationClient.getListenersManager(installationId).createListener();
     if (listeners) listeners[JSON.stringify(arg)] = listener;
 
@@ -85,7 +85,7 @@ export function getQueryStartedHandler<TQueryArgs, TEntity extends NVAObject>({
     const { data } = await queryFulfilled;
     const listener = listeners?.[JSON.stringify(arg)];
     if (listener) {
-      const installationId = credentialsManager.getWellCubeInstallationId();
+      const installationId = credentialsManager.getNcentInstallationId();
       listener.remove();
 
       setListeners(

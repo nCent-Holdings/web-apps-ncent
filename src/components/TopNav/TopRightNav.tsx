@@ -3,17 +3,11 @@ import useSession from '../../api-hooks/session/useSession';
 import Avatar from '../Avatar/Avatar';
 import { DropdownContent, MenuItem } from './DropdownContent';
 import Help from './Help';
-import TopnavIconNotifications from './icons/TopnavIconNotifications';
 import TopnavIconHelp from './icons/TopnavIconHelp';
-import Notifications from '../Notifications/Notifications';
 import { useParams } from 'react-router-dom';
-import NotificationsDropdown from '../NotificationsDropdown/NotificationsDropdown';
-import { twMerge } from 'tailwind-merge';
-import { NOTIFICATIONS } from '../NotificationsDropdown/notificationsMock';
 import NavItem from './NavItem';
 
-const EXTERNAL_LINK_FORM =
-  'https://docs.google.com/forms/d/e/1FAIpQLSdxR7nFnslvcjOPakJaibuGkjmQvnvFFCRa2hIplLivIGjSrw/viewform?usp=sf_link';
+const EXTERNAL_LINK_FORM = 'https://theonion.com';
 
 const TopRightNav = () => {
   const [, sessionAPI] = useSession();
@@ -21,24 +15,65 @@ const TopRightNav = () => {
   const { getAuthorizedUserData, logout } = sessionAPI ?? {};
   let firstName = '';
   let secondName = '';
+  let fullName = '';
 
   const { orgHandle } = useParams<'orgHandle'>();
+
+  /**
+   * A helper function that splits `fullName` into { firstName, secondName }.
+   * - If 0 names => both ''.
+   * - If 1 name => firstName gets that name, secondName = ''.
+   * - If 2 or more => secondName = last "word", firstName = everything else.
+   */
+  function splitFullNameToFirstAndSecond(fullName: string): { firstName: string; secondName: string } {
+    let fn = '';
+    let sn = '';
+
+    const trimmed = fullName.trim();
+    if (!trimmed) {
+      // no names
+      return { firstName: '', secondName: '' };
+    }
+
+    // split on 1+ spaces
+    const parts = trimmed.split(/\s+/);
+
+    if (parts.length === 1) {
+      // only one name
+      fn = parts[0];
+      sn = '';
+    } else {
+      // 2+ names
+      sn = parts[parts.length - 1];
+      fn = parts.slice(0, parts.length - 1).join(' ');
+    }
+
+    return { firstName: fn, secondName: sn };
+  }
 
   // When users log out, this was throwing is throwing an error b/c
   // it tries to decode a JWT token that doesn't exist
   try {
     const userData = getAuthorizedUserData();
+    fullName = userData.name;
     firstName = userData.firstName;
     secondName = userData.secondName;
+
+    // If both firstName and secondName are empty, try splitting fullName
+    if (!firstName && !secondName && fullName) {
+      const { firstName: f, secondName: s } = splitFullNameToFirstAndSecond(fullName);
+      firstName = f;
+      secondName = s;
+    }
   } catch (err) {
     // Do nothing
   }
 
   const menuHelpItems: MenuItem[] = [
-    { name: 'Help center', externalLink: 'https://support.delos.com/hc/en-us' },
+    { name: 'Help center', externalLink: 'https://ncent.me' },
     {
       name: 'Submit a ticket',
-      externalLink: 'https://support.delos.com/hc/en-us',
+      externalLink: 'https://ticketmaster.com',
     },
   ];
 
@@ -61,20 +96,6 @@ const TopRightNav = () => {
 
   return (
     <div className="ml-auto mr-[2rem] flex flex-[0_0_auto] items-center gap-x-[1.25rem]">
-      <NavItem onClickOutside={handleClickOutside('notifications')}>
-        <Notifications
-          onClick={(event) => handleOnClick(event, 'notifications')}
-          className={twMerge(activeMenu === 'notifications' && 'bg-blue-brilliant')}
-          hasNewNotifications={NOTIFICATIONS.some((item) => !item.dateRead)}
-        >
-          <TopnavIconNotifications
-            className={twMerge('-mx-1 h-[1.375rem] w-[1.375rem]', activeMenu === 'notifications' && 'text-white')}
-          />
-        </Notifications>
-        <div className="relative z-10 mt-2">
-          {activeMenu === 'notifications' && <NotificationsDropdown notifications={NOTIFICATIONS} />}
-        </div>
-      </NavItem>
       <NavItem onClickOutside={handleClickOutside('help')}>
         <Help onClick={(event) => handleOnClick(event, 'help')}>
           {<TopnavIconHelp className="h-[1.375rem] w-[1.375rem]" />}

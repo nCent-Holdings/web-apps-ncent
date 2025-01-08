@@ -17,7 +17,7 @@ export async function setPassword(email: string, verificationCode: string, newPa
 }
 
 export async function getUser(nouns?: string[]) {
-  const installationId = credentialsManager.getWellCubeInstallationId();
+  const installationId = credentialsManager.getNcentInstallationId();
 
   return coreAPI.users.get(nouns, installationId);
 }
@@ -92,13 +92,13 @@ export const sendNotificationEmail = async (
 };
 
 export async function updateUser(userId: string, newState: TObject): Promise<UserModel> {
-  const installationId = credentialsManager.getWellCubeInstallationId();
+  const installationId = credentialsManager.getNcentInstallationId();
 
   return coreAPI.users.updateUser(userId, newState, installationId);
 }
 
 export async function toggleNotification(userId: string, toggleId: string): Promise<UserModel> {
-  const installationId = credentialsManager.getWellCubeInstallationId();
+  const installationId = credentialsManager.getNcentInstallationId();
   return coreAPI.users.toggleNotification(userId, toggleId, installationId);
 }
 
@@ -106,6 +106,6 @@ export async function phoneUserValidate(
   userId: string,
   phone: string,
 ): Promise<{ isValid: boolean; errorMessage?: string }> {
-  const installationId = credentialsManager.getWellCubeInstallationId();
+  const installationId = credentialsManager.getNcentInstallationId();
   return coreAPI.users.validatePhoneNumber(userId, phone, installationId);
 }

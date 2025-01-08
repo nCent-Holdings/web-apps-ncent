@@ -6,6 +6,8 @@
 @import '@ncent-holdings/ux-components/dist/tailwind.css';
 @import '@ncent-holdings/ux-components/dist/style.css';
 @import 'react-international-phone/style.css';
+@import 'slick-carousel/slick/slick.css';
+@import 'slick-carousel/slick/slick-theme.css';
 
 html {
   @apply scroll-smooth;

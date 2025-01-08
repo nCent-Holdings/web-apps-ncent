@@ -160,16 +160,6 @@ export default function NotificationsDropdown({
             <div className="flex">
               <ToggleSwitch
                 checked={onlyUnread}
-                containerClassExtend={{
-                  backgroundColor: onlyUnread ? '#0061ff' : '#DDE2EC',
-                  boxShadow: 'none',
-                }}
-                ellipseClassExtend={{
-                  background: onlyUnread ? 'white' : '#667085',
-                  height: 16,
-                  width: 16,
-                  transform: onlyUnread ? 'translateX(22px)' : 'translateX(4px)',
-                }}
                 onToggleChange={() => setOnlyUnread(!onlyUnread)}
                 label="Only show unread"
                 labelClassExtend="font-medium text-[14px] text-black-soft"

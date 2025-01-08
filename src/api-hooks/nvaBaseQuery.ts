@@ -11,7 +11,7 @@ export type TNva =
 
 const nvaBaseQuery = async (nva: TNva) => {
   try {
-    const installationId = credentialsManager.getWellCubeInstallationId();
+    const installationId = credentialsManager.getNcentInstallationId();
 
     const data = await coreAPI.multiInstallationClient.executeNVA(nva, installationId);
 

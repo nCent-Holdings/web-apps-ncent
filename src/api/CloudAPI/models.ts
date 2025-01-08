@@ -3,6 +3,7 @@ export type CLOUD_ROLES = 'ADMIN' | 'USER';
 export interface CloudUser {
   id: string;
   email: string;
+  name: string;
   firstName: string;
   secondName: string;
   role: CLOUD_ROLES;

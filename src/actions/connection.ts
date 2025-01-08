@@ -4,7 +4,7 @@ import credentialsManager from '@src/credentialsManager';
 
 export function registerReconnectHandler() {
   coreAPI.multiInstallationClient.onConnected(async () => {
-    const installationId = credentialsManager.getWellCubeInstallationId();
+    const installationId = credentialsManager.getNcentInstallationId();
     await coreAPI.multiInstallationClient.enableListenings();
     if (installationId) await coreAPI.multiInstallationClient.listenToInstallations([installationId]);
 

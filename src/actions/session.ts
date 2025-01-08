@@ -1,9 +1,7 @@
 import { jwtDecode } from 'jwt-decode';
 import { CloudUser } from '../api/CloudAPI/models';
 import { cloudAPI, coreAPI, cognitoAPI } from '../apiSingleton';
-import config from '../config';
 import credentialsManager from '../credentialsManager';
-import { Exception } from '../lib/X';
 import lastSiteStorage from '@src/utils/lastSiteStorage';
 
 const CLOUD_JWT_STORAGE_KEY = 'cloud_auth'; // Keep the same key as in ux-framework
@@ -51,72 +49,35 @@ export async function loginToCloud(email: string, password: string): Promise<str
 }
 
 async function loginToCore(): Promise<string> {
-  console.log('Fetch product id');
+  const jwt = cloudAPI.apiClient.getAuthToken();
+  const decodedJwt = jwtDecode(jwt);
 
-  const [product] = await cloudAPI.products.list({ name: config.productId });
-
-  if (!product) {
-    throw new Exception('NO_PRODUCTS');
-  }
-
-  console.log('Fetch product id - success', product);
-
-  console.log('Fetch product installations');
-
-  const [installation] = await cloudAPI.installations.list({
-    productId: product.id,
-    productIsPrimary: true,
-  });
-
-  if (!installation) {
-    throw new Exception('NO_INSTALLATIONS');
-  }
-
-  console.log('Fetch product installations - success', installation);
-
-  console.log('Fetch local accounts');
-
-  const { localAccounts } = installation;
-
-  let localAccount = localAccounts.find((la) => la.isPrimary);
-
-  // If there isn't a primary local account, fall back and use the first listed
-  if (!localAccount && localAccounts.length) {
-    localAccount = localAccounts[0];
-  }
-
-  if (!localAccount) {
-    throw new Exception('NO_LOCAL_ACCOUNTS');
-  }
-
-  console.log('Fetch local accounts - success', localAccount);
+  const installationId = credentialsManager.getNcentInstallationId() || 'e7b64ddf-72e6-4f55-83ee-bb7f1bb32931';
+  const manipulatorId = decodedJwt.sub || '';
+  const accessToken = (decodedJwt as any)['custom:accessToken'];
 
   console.log('Connect to InternetUGW');
 
   await coreAPI.multiInstallationClient.connect();
 
-  credentialsManager.set(localAccount.installationId, {
-    installationId: localAccount.installationId,
-    manipulatorId: localAccount.localUserId,
-    accessToken: localAccount.localUserToken,
+  credentialsManager.set(installationId, {
+    installationId: installationId,
+    manipulatorId: manipulatorId,
+    accessToken: accessToken,
   });
 
   console.log('Connect to InternetUGW - success');
 
   console.log('Validate manipulator credentials');
-  const userState = await coreAPI.manipulators.validateCredentials(
-    localAccount.localUserId,
-    localAccount.localUserToken,
-    localAccount.installationId,
-  );
+  const userState = await coreAPI.manipulators.validateCredentials(manipulatorId, accessToken, installationId);
 
-  credentialsManager.setWellCubeCoreId(localAccount.installationId);
+  credentialsManager.setNcentCoreId(installationId);
 
   console.log('Validate manipulator credentials - success', userState);
 
-  console.log('Load hubs credentials');
-  await loadHubsCredentials(product.id);
-  console.log('Load hubs credentials - success', credentialsManager.getAll());
+  // console.log('Load hubs credentials');
+  // await loadHubsCredentials(product.id);
+  // console.log('Load hubs credentials - success', credentialsManager.getAll());
 
   console.log('Enable listenings');
   try {
@@ -124,15 +85,15 @@ async function loginToCore(): Promise<string> {
   } catch (e: any) {
     if (e.message !== 'CLIENT_ALREADY_REGISTERED') throw e;
   }
-  const listenings = await coreAPI.multiInstallationClient.listenToInstallations([localAccount.installationId]);
+  const listenings = await coreAPI.multiInstallationClient.listenToInstallations([installationId]);
   console.log('Enable listenings - success', listenings);
 
-  const wcRoles = await coreAPI.manipulators.getGroups(localAccount.localUserId, localAccount.installationId);
+  const wcRoles = await coreAPI.manipulators.getGroups(manipulatorId, installationId);
   const mappedRoles = wcRoles.map((role: { id: string; name: string }) => role.name);
 
-  credentialsManager.setWellCubeRoles(mappedRoles);
+  credentialsManager.setNcentRoles(mappedRoles);
 
-  return localAccount.installationId;
+  return installationId;
 }
 
 export async function logout(): Promise<void> {
@@ -154,7 +115,7 @@ export function getAuthorizedUserData(): CloudUser {
 }
 
 export function getUserRoles(): string[] {
-  return credentialsManager.getWellCubeRoles();
+  return credentialsManager.getNcentRoles();
 }
 
 export async function loadHubsCredentials(productId: string): Promise<void> {

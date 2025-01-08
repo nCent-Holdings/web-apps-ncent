@@ -43,11 +43,11 @@ export const LoginLayout: React.FC<React.PropsWithChildren> = ({ children }) => 
           {registerBoxMessage && renderIndoorsOptimizedBox()}
           <div className="absolute -left-[20px] bottom-0 right-0 top-0">
             <img
-              alt="Office desk"
-              src="/images/OfficeDesk.jpg"
-              width="646"
-              height="1077"
-              className="h-full w-full object-cover"
+              alt="Ruth"
+              src="/images/people00.png"
+              width="103"
+              height="295"
+              className="align-center h-[100%] w-auto"
             />
           </div>
         </div>

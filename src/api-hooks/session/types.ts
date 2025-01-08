@@ -1,5 +1,6 @@
 export type UserRoles = {
   isDelosAdmin: boolean;
+  isNcentAdmin: boolean;
   isSomeOrgAdmin: boolean;
   isSomeSiteAdmin: boolean;
   isSomeSiteExternalAdmin: boolean;

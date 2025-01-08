@@ -109,16 +109,6 @@ export const SensorMappingSection = ({
       <div className="flex items-center gap-2 px-5 py-1.5 text-[.875rem] leading-[1.5]  [&:last-of-type]:border-b  [&:last-of-type]:border-b-[#D4DFEA]  [&:last-of-type]:pb-[1rem] [&:nth-of-type(2)]:pt-[1rem]">
         <ToggleSwitch
           checked={device.enabled}
-          containerClassExtend={{
-            backgroundColor: device.enabled ? '#0061ff' : '#DDE2EC',
-            boxShadow: 'none',
-          }}
-          ellipseClassExtend={{
-            background: device.enabled ? 'white' : '#667085',
-            height: 16,
-            width: 16,
-            transform: device.enabled ? 'translateX(22px)' : 'translateX(4px)',
-          }}
           onToggleChange={() => onSensorUpdate(pollutant, device.id, !device.enabled)}
         />
 

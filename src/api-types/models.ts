@@ -122,3 +122,10 @@ export interface UserModel extends DarwinUser {
     }[];
   };
 }
+
+export interface BrandModel extends DarwinThing {
+  'ncent/brand'?: {
+    brandname: string;
+    domain: string;
+  };
+}

@@ -16,17 +16,17 @@ interface Config {
 }
 
 const config: Config = {
-  cloudBackendHttpUrl: 'https://cloud.wellcube-prod.dwn-iot.com/api/v1',
-  internetUgwWsUrl: 'wss://ugw.wellcube-prod.dwn-iot.com',
-  productId: 'wellcube',
-  appName: 'wellcube',
+  cloudBackendHttpUrl: 'https://cloud.dev.ncent-path.com/api/v1',
+  internetUgwWsUrl: 'wss://user-gateway.dev.ncent-path.com',
+  productId: 'path',
+  appName: 'ncent',
 
   // Cognito data
-  userPoolId: 'us-east-1_alZhAG2N5',
-  clientId: '1d8g6iq93b2cfq9v9vjc7ju82c',
+  userPoolId: 'us-east-2_OEUcpqpQQ',
+  clientId: '52ogd2jsni4lvfe1drtf45qhek',
 
   // S3 Config
-  awsS3Region: 'us-east-1',
+  awsS3Region: 'us-east-2',
 
   // DEMO DATA
   demoUserJwt: '',

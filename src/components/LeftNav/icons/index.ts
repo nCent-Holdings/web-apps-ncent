@@ -22,3 +22,8 @@ export { default as NavIconSystemOn2 } from './nav-icon-system-on2.svg?react';
 export { default as NavIconUsers } from './nav-icon-users.svg?react';
 export { default as NavIconUsersOn } from './nav-icon-users-on.svg?react';
 export { default as NavIconUsersOn2 } from './nav-icon-users-on2.svg?react';
+export { default as NavIconProducts } from './nav-icon-products.svg?react';
+export { default as NavIconSchedule } from './nav-icon-schedule.svg?react';
+export { default as NavIconBudget } from './nav-icon-budget.svg?react';
+export { default as NavIconAssets } from './nav-icon-assets.svg?react';
+export { default as NavIconSettings } from './nav-icon-settings.svg?react';

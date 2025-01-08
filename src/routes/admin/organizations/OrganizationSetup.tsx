@@ -2,7 +2,7 @@ import * as orgActions from '../../../actions/organizations';
 import * as listActions from '../../../actions/lists';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { HeadingDeprecated, Modal, Input, Field, Dropdown, Button } from '@ncent-holdings/ux-components';
+import { Heading, Modal, Input, Field, Dropdown, Button } from '@ncent-holdings/ux-components';
 import { twMerge } from 'tailwind-merge';
 import ScrollVisibleElement from '../../../components/ScrollVisibleElement/ScrollVisibleElement';
 import { Industry } from '../../../types/Industry';
@@ -269,7 +269,7 @@ export const Organizations: React.FC = () => {
     return (
       <div id="Frame 8293">
         <ScrollVisibleElement scrollTitle="Add an organization">
-          <HeadingDeprecated heading="Add an organization" />
+          <Heading heading="Add an organization" />
         </ScrollVisibleElement>
         <div className="h-[3.25rem]" />
         <div className="flex w-full max-w-[46rem] flex-col gap-[0px] p-0">
@@ -368,7 +368,7 @@ export const Organizations: React.FC = () => {
     return (
       <div id="Frame 8282" className="bg-white-background">
         <ScrollVisibleElement scrollTitle="Add an organization">
-          <HeadingDeprecated heading="Add an organization" />
+          <Heading heading="Add an organization" />
         </ScrollVisibleElement>
         <div className="h-[52px]" />
         <p className="text-h2">Details</p>

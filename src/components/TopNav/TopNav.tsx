@@ -1,5 +1,5 @@
 import React from 'react';
-import LogoWellcube from './icons/logo-wellcube-sm.svg?react';
+// import LogoWellcube from './icons/logo-wellcube-sm.svg?react';
 import useSession from '../../api-hooks/session/useSession';
 import Logo from '../Logo/Logo';
 import { CLOUD_ROLES } from '../../api/CloudAPI/models';
@@ -31,13 +31,15 @@ export const TopNav = () => {
       <div className="flex flex-1 items-center">
         <div className="pl-[.88rem] pr-[1.19rem]">
           <Logo path={'/'} handleClick={handleLogoClicked}>
-            <LogoWellcube />
+            <img src="/icons/nCent-logo.png" width="50" height="50" />
           </Logo>
         </div>
-
         <div>{appNav.topNavContent}</div>
+        <div className="mb-1 pl-[47%] text-center">
+          <div className="text-[1.2rem] font-bold leading-[1.25] text-blue-suede">Company Name</div>
+          <div className="text-[1rem] font-medium leading-[1.25] text-blue-suede">URL</div>
+        </div>
       </div>
-
       <TopRightNav />
     </div>
   );

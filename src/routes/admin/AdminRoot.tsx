@@ -1,45 +1,40 @@
 import useSession from '../../api-hooks/session/useSession';
 import React, { useEffect, useLayoutEffect } from 'react';
-import { Navigate, Outlet, useLocation, useNavigate } from 'react-router-dom';
+import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { useAppNav } from '@src/contexts/AppNavContext/AppNavContext';
 import LeftNavAdmin from '../../components/LeftNav/LeftNavAdmin';
-import { ClientRoot } from '../client/ClientRoot';
 import { getLastPathnameSegment } from '@src/utils/urlUtils';
 
 export const AdminRoot = () => {
   const appNav = useAppNav();
   const [, sessionAPI] = useSession();
 
-  const { isDelosAdmin, isSomeOrgAdmin, isSomeSiteAdmin, isSomeSiteExternalAdmin } = sessionAPI.getUserPermissions();
+  const { isNcentAdmin } = sessionAPI.getUserPermissions();
 
   const { pathname } = useLocation();
   const path = getLastPathnameSegment(pathname) ?? '';
   const navigate = useNavigate();
 
   useLayoutEffect(() => {
-    if (!isDelosAdmin) {
-      appNav.setLeftNavContent(<></>);
-      appNav.setTopNavContent(<></>);
-    } else {
-      appNav.setLeftNavContent(<LeftNavAdmin />);
-      appNav.setTopNavContent(<></>);
-    }
+    //    if (!isNcentAdmin) {
+    //      appNav.setLeftNavContent(<></>);
+    //      appNav.setTopNavContent(<></>);
+    //    } else {
+    appNav.setLeftNavContent(<LeftNavAdmin />);
+    appNav.setTopNavContent(<></>);
+    //    }
   }, []);
 
   useEffect(() => {
-    if (path === '' && isDelosAdmin) {
+    if (path === '' && isNcentAdmin) {
       // TODO: Swap this out for a user-defined 'default' landing page
-      navigate('/organizations');
+      navigate('/brandlist');
+    } else if (path === '') {
+      navigate('/dashboard');
     }
   }, [path]);
 
-  if (isDelosAdmin) {
-    return <Outlet />;
-  } else if (isSomeOrgAdmin || isSomeSiteAdmin || isSomeSiteExternalAdmin) {
-    return <ClientRoot />;
-  } else {
-    return <Navigate to="/no-access" />;
-  }
+  return <Outlet />;
 };
 
 export default AdminRoot;

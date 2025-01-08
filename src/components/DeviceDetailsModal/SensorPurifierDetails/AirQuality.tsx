@@ -1,6 +1,6 @@
-import React, { ReactElement, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { PurifierModel, SensorModel } from '../../../api-types/models';
-import { AQIMeter, PollutantDisplay } from '@ncent-holdings/ux-components';
+import { AQIMeter } from '@ncent-holdings/ux-components';
 import DeviceDetailsSection from '../common/DeviceDetailsSection';
 import dayjs from 'dayjs';
 
@@ -12,10 +12,9 @@ import timezone from 'dayjs/plugin/timezone';
 dayjs.extend(utc);
 dayjs.extend(timezone);
 
-import { POLLUTANT_THRESHOLDS, SHORT_DATE_FORMAT } from '../common/constants';
+import { SHORT_DATE_FORMAT } from '../common/constants';
 import deviceTooltips from '../common/DeviceTooltips';
 import { useSiteFromHandleOrLastStored } from '@src/features/useSiteFromHandleOrLastStored';
-import { formatUnits } from '@src/utils';
 
 type AirQualityProps = {
   device: PurifierModel | SensorModel;
@@ -37,44 +36,8 @@ export const AirQuality: React.FC<AirQualityProps> = ({ device }: AirQualityProp
     );
   };
 
-  const renderPollutant = (params: {
-    dataKey: 'air/pm25' | 'air/co2' | 'air/tvoc';
-    pollutant: 'pm25' | 'co2' | 'tvoc';
-    errorLabel?: string;
-    displayLabel?: string;
-    PollutantTooltip?: ReactElement;
-  }) => {
-    const { dataKey, pollutant, PollutantTooltip } = params;
-    let { errorLabel, displayLabel } = params;
-
-    errorLabel = errorLabel || pollutant;
-    displayLabel = displayLabel || pollutant;
-
-    const thresholds = POLLUTANT_THRESHOLDS[pollutant];
-    const error = device?.['sensor/status']?.statuses.find((err) => err.label.toLocaleLowerCase() === errorLabel);
-
-    const lrDay = dayjs.unix(device[dataKey]?.timestamp || -1).tz(siteTz);
-
-    return (
-      <PollutantDisplay
-        pollutant={displayLabel}
-        units={formatUnits(device[dataKey]?.units)}
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        concentration={device[dataKey]?.[pollutant] || 0}
-        thresholds={thresholds}
-        classExtend={!hasCO2 ? 'h-[137px]' : ''}
-        TooltipComponent={PollutantTooltip}
-        error={
-          error && (
-            <div className="flex text-[10px] font-medium">
-              <div className="mr-1 text-black-soft">Last reported</div>
-              <div className="text-grey-light-500">{lrDay.format(SHORT_DATE_FORMAT)}</div>
-            </div>
-          )
-        }
-      />
-    );
+  const renderPollutant = () => {
+    return <div></div>;
   };
 
   // Based on the Delos AQI score (DAQI)
@@ -120,24 +83,9 @@ export const AirQuality: React.FC<AirQualityProps> = ({ device }: AirQualityProp
           </div>
         </div>
         <div className="flex-1 last:border-none [&>*]:border-b [&>*]:border-[#D4DFEA]">
-          {renderPollutant({
-            dataKey: 'air/pm25',
-            pollutant: 'pm25',
-            errorLabel: 'pm',
-            displayLabel: 'PM 2.5',
-            PollutantTooltip: deviceTooltips.PM25Tooltip(),
-          })}
-          {renderPollutant({
-            dataKey: 'air/tvoc',
-            pollutant: 'tvoc',
-            PollutantTooltip: deviceTooltips.TVOCTooltip(),
-          })}
-          {hasCO2 &&
-            renderPollutant({
-              dataKey: 'air/co2',
-              pollutant: 'co2',
-              PollutantTooltip: deviceTooltips.CO2Tooltip(),
-            })}
+          {renderPollutant()}
+          {renderPollutant()}
+          {hasCO2 && renderPollutant()}
         </div>
       </div>
     </DeviceDetailsSection>

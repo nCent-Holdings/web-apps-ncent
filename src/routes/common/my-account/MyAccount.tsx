@@ -21,7 +21,7 @@ import { arrayToObject } from '@src/utils';
 export const MyAccount = () => {
   const [profileData, setProfileData] = useState<EditSectionItem[]>();
 
-  const wcInstallationId = credentialsManager.getWellCubeInstallationId();
+  const wcInstallationId = credentialsManager.getNcentInstallationId();
   const wcCredentials = credentialsManager.get(wcInstallationId);
   const userCoreId = wcCredentials.manipulatorId;
 

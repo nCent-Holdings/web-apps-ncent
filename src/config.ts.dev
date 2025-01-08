@@ -22,8 +22,8 @@ const config: Config = {
   appName: 'wellcube',
 
   // Cognito data
-  userPoolId: 'us-east-2_BMQuBIaaj',
-  clientId: '38adncfvrr78a9m010jbisa409',
+  userPoolId: 'us-east-2_OEUcpqpQQ',
+  clientId: '52ogd2jsni4lvfe1drtf45qhek',
 
   // S3 Config
   awsS3Region: 'us-east-2',

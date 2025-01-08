@@ -1,9 +1,17 @@
-// postcss.config.js
+// postcss.config.cjs
+const removeCharset = require('./remove-charset.cjs');
+const postcssImport = require('postcss-import');
+// const postcssNesting = require('postcss-nesting');
+const tailwindcss = require('tailwindcss');
+const autoprefixer = require('autoprefixer');
+
 module.exports = {
-  plugins: {
-    'postcss-import': {},
-    'tailwindcss/nesting': 'postcss-nesting',
-    tailwindcss: {},
-    autoprefixer: {},
-  },
+  plugins: [
+    removeCharset(),
+    postcssImport(),
+//    postcssNesting(),
+    tailwindcss(),
+    autoprefixer(),
+  ],
 };
+

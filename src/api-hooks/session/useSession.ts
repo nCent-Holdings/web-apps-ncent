@@ -35,6 +35,7 @@ export const USER_ROLES = {
   ORG_ADMIN: 'org-admin',
   SITE_ADMIN: 'site-admin',
   SITE_EXTERNAL: 'external-admin',
+  NCENT_ADMIN: 'ncent-admin',
 };
 
 export default function useSession(): UseSession {
@@ -117,12 +118,14 @@ export default function useSession(): UseSession {
         };
 
         const isDelosAdmin = this.getUserRoles().includes(USER_ROLES.TSM || USER_ROLES.DELOS_ADMIN);
+        const isNcentAdmin = this.getUserRoles().includes(USER_ROLES.NCENT_ADMIN);
         const isSomeOrgAdmin = checkSomeRole(USER_ROLES.ORG_ADMIN);
         const isSomeSiteAdmin = checkSomeRole(USER_ROLES.SITE_ADMIN);
         const isSomeSiteExternalAdmin = checkSomeRole(USER_ROLES.SITE_EXTERNAL);
 
         return {
           isDelosAdmin,
+          isNcentAdmin,
           isSomeOrgAdmin,
           isSomeSiteAdmin,
           isSomeSiteExternalAdmin,

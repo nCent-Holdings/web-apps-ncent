@@ -1,31 +1,31 @@
 import { CredentialsManager } from '@ncent-holdings/user-gateway-client';
 
-class WellCubeCredentialsManager extends CredentialsManager {
-  _wellCubeCoreId?: string;
-  _wellCubeRoles?: string[];
+class NcentCredentialsManager extends CredentialsManager {
+  _ncentCoreId?: string;
+  _ncentRoles?: string[];
 
   clear() {
-    this._wellCubeCoreId = undefined;
-    this._wellCubeRoles = [];
+    this._ncentCoreId = undefined;
+    this._ncentRoles = [];
 
     super.clear();
   }
 
-  setWellCubeCoreId(wellCubeCoreId: string): void {
-    this._wellCubeCoreId = wellCubeCoreId;
+  setNcentCoreId(wellCubeCoreId: string): void {
+    this._ncentCoreId = wellCubeCoreId;
   }
 
-  getWellCubeInstallationId(): string {
-    return this._wellCubeCoreId || '';
+  getNcentInstallationId(): string {
+    return this._ncentCoreId || '';
   }
 
-  setWellCubeRoles(roles: string[]): void {
-    this._wellCubeRoles = roles;
+  setNcentRoles(roles: string[]): void {
+    this._ncentRoles = roles;
   }
 
-  getWellCubeRoles(): string[] {
-    return this._wellCubeRoles || [];
+  getNcentRoles(): string[] {
+    return this._ncentRoles || [];
   }
 }
 
-export default WellCubeCredentialsManager;
+export default NcentCredentialsManager;

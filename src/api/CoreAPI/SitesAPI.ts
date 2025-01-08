@@ -166,7 +166,7 @@ class SitesAPI extends BaseAPI {
     time_start: string;
     time_end: string;
   }): Promise<OrgSiteModel> {
-    const wcInstallationId = credentialsManager.getWellCubeInstallationId();
+    const wcInstallationId = credentialsManager.getNcentInstallationId();
 
     try {
       const updSite = await this.multiInstallationClient.executeNVA(
@@ -195,7 +195,7 @@ class SitesAPI extends BaseAPI {
     time_start: string;
     time_end: string;
   }): Promise<OrgSiteModel> {
-    const wcInstallationId = credentialsManager.getWellCubeInstallationId();
+    const wcInstallationId = credentialsManager.getNcentInstallationId();
 
     try {
       const updSite = await this.multiInstallationClient.executeNVA(
@@ -225,7 +225,7 @@ class SitesAPI extends BaseAPI {
     time_start: string;
     time_end: string;
   }): Promise<OrgSiteModel> {
-    const wcInstallationId = credentialsManager.getWellCubeInstallationId();
+    const wcInstallationId = credentialsManager.getNcentInstallationId();
 
     try {
       const updSite = await this.multiInstallationClient.executeNVA(

@@ -24,6 +24,7 @@ import { DeviceDetailsContextProvider } from '@src/contexts/DeviceDetailsContext
 import ClientUsers from './client/users/ClientUsers';
 import MyAccount from './common/my-account';
 import NoAccessPage from './NoAccessPage';
+import Dashboard from './client/dashboard';
 
 const appRouter = createBrowserRouter([
   {
@@ -55,6 +56,10 @@ const appRouter = createBrowserRouter([
           {
             path: 'terms-and-conditions',
             element: <TermsAndConditions />,
+          },
+          {
+            path: 'dashboard',
+            element: <Dashboard />,
           },
           {
             path: 'organizations',

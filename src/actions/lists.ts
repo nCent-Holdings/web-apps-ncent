@@ -2,7 +2,7 @@ import { coreAPI } from '../apiSingleton';
 import credentialsManager from '../credentialsManager';
 
 export async function getIndustryList(): Promise<Array<string>> {
-  const installationId = credentialsManager.getWellCubeInstallationId();
+  const installationId = credentialsManager.getNcentInstallationId();
 
   return coreAPI.lists.getIndustries(installationId);
 }
@@ -28,7 +28,7 @@ export async function getSortedIndustryList(withOther = false): Promise<Array<st
 }
 
 export async function getFirmwareList() {
-  const installationId = credentialsManager.getWellCubeInstallationId();
+  const installationId = credentialsManager.getNcentInstallationId();
 
   return coreAPI.lists.getFirmware(installationId);
 }

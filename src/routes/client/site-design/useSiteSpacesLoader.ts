@@ -29,7 +29,7 @@ const useSiteSpacesLoader = () => {
       dispatch(siteDesignActions.setSpaces({ spaces }));
     }
 
-    const installationId = credentialsManager.getWellCubeInstallationId();
+    const installationId = credentialsManager.getNcentInstallationId();
     try {
       const listener = coreAPI.multiInstallationClient.getListenersManager(installationId).createListener();
 

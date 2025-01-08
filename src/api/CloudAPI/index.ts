@@ -7,6 +7,7 @@ import LocalAccountsAPI from './LocalAccountsAPI';
 import ProductsAPI from './ProductsAPI';
 import SessionAPI from './SessionAPI';
 import UsersAPI from './UsersAPI';
+import BrandsAPI from './BrandsAPI';
 import ActionsAPI from './ActionsAPI';
 
 export interface CloudAPI {
@@ -18,6 +19,7 @@ export interface CloudAPI {
   session: SessionAPI;
   apiKey: ApiKeyAPI;
   users: UsersAPI;
+  brands: BrandsAPI;
   actions: ActionsAPI;
 }
 
@@ -33,6 +35,7 @@ export default function createCloudAPI({ cloudBackendHttpUrl }: { cloudBackendHt
     session: new SessionAPI({ apiClient }),
     apiKey: new ApiKeyAPI({ apiClient }),
     users: new UsersAPI({ apiClient }),
+    brands: new BrandsAPI({ apiClient }),
     actions: new ActionsAPI({ apiClient }),
   };
 }

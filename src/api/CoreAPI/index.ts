@@ -11,6 +11,7 @@ import GatewaysAPI from './GatewaysAPI';
 import PurifierAPI from './PurifierAPI';
 import SensorMappingAPI from './SensorMappingAPI';
 import UserAPI from './UserAPI';
+import BrandAPI from './BrandAPI';
 import SystemAPI from './SystemAPI';
 
 export interface CoreAPI {
@@ -25,6 +26,7 @@ export interface CoreAPI {
   purifiers: PurifierAPI;
   sensorMapping: SensorMappingAPI;
   users: UserAPI;
+  brands: BrandAPI;
   system: SystemAPI;
 }
 
@@ -62,6 +64,7 @@ export default function createCoreAPI({
     purifiers: new PurifierAPI({ multiInstallationClient }),
     sensorMapping: new SensorMappingAPI({ multiInstallationClient }),
     users: new UserAPI({ multiInstallationClient }),
+    brands: new BrandAPI({ multiInstallationClient }),
     system: new SystemAPI({ multiInstallationClient }),
   };
 }
