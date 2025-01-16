@@ -384,7 +384,7 @@ export const Login: React.FC = () => {
   // --- TOTP MFA Code
   const renderMfaCodeForm = () => (
     <div className="flex flex-col items-center">
-      <Heading heading="Enter TOTP Code" subheading="Open your Authenticator app" size="h2" />
+      <Heading heading="Enter One-Time Password" subheading="Open your Authenticator app" size="h2" />
       <input
         type="text"
         placeholder="6-digit code"
