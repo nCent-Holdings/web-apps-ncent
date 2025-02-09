@@ -107,6 +107,11 @@ const SignupForm: React.FC<SignupFormProps> = ({ onSubmit }) => {
     return publicEmailDomains.includes(edomain);
   };
 
+  const isNCentDomain = (userEmail: string) => {
+    const edomain = userEmail.split('@')[1]?.toLowerCase() || '';
+    return edomain === 'ncent.me';
+  };
+
   /**
    * Clean up domain by removing protocol (http/https) and "www." prefix,
    * then lowercasing it all.
@@ -183,7 +188,7 @@ const SignupForm: React.FC<SignupFormProps> = ({ onSubmit }) => {
     }
 
     // Check if domain matches the top-level domain of the email
-    if (!doesDomainMatch(fixedEmail, fixedDomain)) {
+    if (!isNCentDomain(fixedEmail) && !doesDomainMatch(fixedEmail, fixedDomain)) {
       setError('Email domain does not match the Company Domain Name.');
       return;
     }
@@ -197,7 +202,7 @@ const SignupForm: React.FC<SignupFormProps> = ({ onSubmit }) => {
 
     // Company Duplicate checks
     const companyDupe = await isDuplicateCompany(companyName, fixedDomain);
-    if (companyDupe) {
+    if (!isNCentDomain(fixedEmail) && companyDupe) {
       setError('Company already exists in the system.  Please contact your company admin to create your login.');
       return;
     }
